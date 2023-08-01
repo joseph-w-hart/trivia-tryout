@@ -1,18 +1,33 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <section class="home">
+    <button v-on:click="loadQuestions">Generate Questions</button>
+    <div class="question-list">
+      <QuestionComponent v-for="question in this.$store.state.questions" 
+        v-bind:key="question.correct_answer"
+        v-bind:item="question">
+      </QuestionComponent>
+    </div>
+  </section>
 </template>
 
 <script>
+import QuestionComponent from '@/components/QuestionComponent.vue';
+
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld
-  }
+    QuestionComponent
+  },
+  data() {
+    return {
+    }
+  },
+  methods: {
+    loadQuestions() {
+      this.$store.commit("LOAD_QUESTIONS");
+    }
+  },
 }
 </script>
