@@ -2,10 +2,12 @@
     <section class="question">
         <h3>{{ question.category }}</h3>
         <h4>{{ question.question }}</h4>
-        <div class="answers">
+        <div class="answers" >
             <AnswerComponent 
-                v-for="answer in answers" v-bind:key="answer" 
-                v-bind:answer="answer">
+                v-for="answer in answers" 
+                v-bind:key="answer" 
+                v-bind:answer="answer" 
+                v-bind:question="question" >
             </AnswerComponent>
         </div>
     </section>
@@ -25,7 +27,7 @@ export default {
         }
     },
     methods: {
-
+        
     },
     computed: {
 
